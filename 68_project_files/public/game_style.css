@@ -1,0 +1,75 @@
+body {
+    font-family: "Press Start 2P", sans-serif;
+}
+#game-container {
+    position: relative;
+}
+canvas, #counter, #game-start, #game-over {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+canvas, #game-start, #game-over {
+    border: 1px solid gray;
+    width: 854px;
+    height: 480px;
+}
+canvas {
+    background: url(/photo/background.png);
+    background-size: cover;
+}
+#game-start, #game-over {
+    background: rgba(1, 1, 1, 0.8);
+}
+#counter text {
+    font-size: 130%;
+    fill: white;
+    stroke: black;
+    stroke-width: 1px;
+}
+#game-start text {
+    font-size: 150%;
+    fill: white;
+    text-anchor: middle;
+}
+#game-start #game-title {
+    font-size: 400%;
+    fill: url(#title-fill);
+    stroke: black;
+}
+#game-over text {
+    font-size: 120%;
+    fill: url(#game-over-fill);
+    text-anchor: middle;
+}
+
+#attacker_shop {
+    position: absolute;
+    top: 500px;  /* fit below canvas */
+    left: 25%;
+    transform: translateX(-50%);
+    justify-content: center; 
+}
+
+#item_list {
+    display: flex;
+    gap: 50px; /*spacing between items */
+}
+
+#shop_text {
+    border: 4px double red; 
+    padding: 10px;
+}
+
+#item1 , #item2 {
+    border: 2px solid blue;
+    padding: 10px;
+    box-shadow: 0px 0px 10px blue; 
+}
+
+#endpage-lobby-button {
+    border: 2px solid white; 
+    border-radius: 10px; /* Rounded edges */
+    padding: 10px;
+}
+

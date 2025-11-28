@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hunt And Survive</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P" rel="stylesheet">
+    <link href="game_style.css" rel="stylesheet">
+</head>
+<body>
+    <div id="game-container">
+        <canvas width="854px" height="480px"></canvas>
+
+        <svg xmlns="http://www.w3.org/2000/svg" id="counter">
+            <text x="10" y="35">
+                TIME:<tspan id="time-remaining">20</tspan>
+            </text>
+        </svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" id="game-start">
+            <defs>
+                <linearGradient id="title-fill" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0.2" stop-color="red" />
+                    <stop offset="0.4" stop-color="yellow" />
+                    <stop offset="0.6" stop-color="green" />
+                    <stop offset="0.8" stop-color="purple" />
+                </linearGradient>
+            </defs>
+            <text id="game-title" x="50%" y="45%">GEM RUSH!</text>
+            <text x="50%" y="60%">Click here to start the game</text>
+        </svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg" id="game-over" style="display: none">
+            <defs>
+                <linearGradient id="game-over-fill" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="red" />
+                    <stop offset="0.5" stop-color="yellow" />
+                    <stop offset="1" stop-color="red" />
+                </linearGradient>
+            </defs>
+            <text x="50%" y="10%"> Game Over! </text>         
+            <text id="who-win" x="50%" y="25%">
+                Defender Wins!!!
+            </text>       
+            <text x="50%" y="40%">
+                Defender has collected <tspan id="final-gems">0</tspan> gem(s).       
+            </text>
+            <text x="50%" y="55%">
+                Attacker has spent <tspan id="attacker-spent">0</tspan> gem(s).       
+            </text>
+            <text x="50%" y="70%">Wait 10 Seconds For Next Round</text>
+            <foreignObject id="endpage-lobby-button" x="17%" y="80%" width="640" height="50" xmlns="http://www.w3.org/1999/xhtml" style="color: orange; font-size: 20px;">               
+                Or Click Here To Go Back Lobby               
+            </foreignObject>
+            
+        </svg>
+    </div>
+
+    <div id="attacker_shop">
+        <p id="shop_text">Attacker Shop: <tspan id="attacker-current-gems">0</tspan> gem(s) left</p>
+        <div id="item_list">
+            <div id="item1"> <p>Monster $2</p>          </div>     
+            <div id="item2"> <p>Spider Web Trap $1</p>  </div> 
+        </div>      
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="scripts/bounding_box.js"></script>
+    <script src="scripts/sprite.js"></script>
+    <script src="scripts/player.js"></script>
+    <script src="scripts/gem.js"></script>
+    <script src="scripts/fire.js"></script>
+    <script src="/socket.io/socket.io.min.js"></script>
+    <script src="scripts/socket.js"></script>
+    <script src="scripts/avatar.js"></script>
+    <script src="scripts/bullet.js"></script>
+    <script src="scripts/registration.js"></script>
+    <script src="scripts/authentication.js"></script>
+    <script src="scripts/game.js"></script>
+
+    <script>
+    $(function() {
+        let currentUser = null;
+   
+        $(document).ready(() => {
+            
+            // Reconnect to the server
+            Socket.connect();
+
+            // Get the current user from sessionStorage
+            OnlineUser = sessionStorage.getItem("OnlineUser");
+            currentUser = sessionStorage.getItem("currentUser");
+            console.log("all users:" , OnlineUser)
+            console.log("Current user in game:", currentUser);
+            // Notify the server about the reconnected user
+            if (typeof currentUser !== 'undefined' ) {
+                Socket.reconnectUser(currentUser); // Emit "reconnect user" event to the server
+                console.log("User reconnected:", currentUser);
+                game.initializeGame(currentUser); // Initialize the game with the current user
+            } 
+        });
+ 
+        
+    });
+    </script>
+</body>
+</html>
