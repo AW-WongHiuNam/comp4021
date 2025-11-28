@@ -1,4 +1,4 @@
-# comp4021
+# comp4021 : Internet Computing
 a web course, have labs and project
 there is absence of node modules files in lab5 ,lab6 and 68_project
 
