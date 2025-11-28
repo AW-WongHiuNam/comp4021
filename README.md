@@ -28,15 +28,15 @@ Below is the project proposal:
 	If defender did not die, then defender will exchange with attacker and play again to see whose mark is higher to determine the winner.
 
 	Object:
-		People: surviving defender , monster
-			
-		Items: healing items( randomly generated in gaming area), damaging items(bought and impose by attacker)
-	
-		Bullets: to shot and kill monster(infinite bullet)
-	
-		Coins: randomly generated in gaming area, will despawn after a while of time , getting the coins can increase the mark
-	
-		Marks calculation: Survive of the time in second + monster killed + coins with weighting.
+	People: surviving defender , monster
+
+	Items: healing items( randomly generated in gaming area), damaging items(bought and impose by attacker)
+
+	Bullets: to shot and kill monster(infinite bullet)
+
+	Coins: randomly generated in gaming area, will despawn after a while of time , getting the coins can increase the mark
+
+	Marks calculation: Survive of the time in second + monster killed + coins with weighting.
 	
  5. Game over page 
 • What will be in it 
